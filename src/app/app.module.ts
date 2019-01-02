@@ -41,6 +41,7 @@ import { AuthGuard } from './auth-guard.service';
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
+      // for anonymous user
       {
         path: '', component: HomeComponent
       }, {
@@ -48,17 +49,19 @@ import { AuthGuard } from './auth-guard.service';
       }, {
         path: 'shopping-cart', component: ShoppingCartComponent
       }, {
+        path: 'login', component: LoginComponent
+      },
+      // for login user
+      {
         path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]
       }, {
         path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]
       }, {
         path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]
       }, {
-        path: 'login', component: LoginComponent
+        path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard]
       }, {
-        path: 'admin/orders', component: AdminOrdersComponent
-      }, {
-        path: 'admin/products', component: AdminProductsComponent
+        path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]
       }
     ])
   ],
