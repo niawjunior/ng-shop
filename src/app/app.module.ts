@@ -17,6 +17,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
       }
     ])
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
