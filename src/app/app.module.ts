@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -47,11 +48,11 @@ import { AuthService } from './auth.service';
       }, {
         path: 'shopping-cart', component: ShoppingCartComponent
       }, {
-        path: 'check-out', component: CheckOutComponent
+        path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]
       }, {
-        path: 'order-success', component: OrderSuccessComponent
+        path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]
       }, {
-        path: 'my/orders', component: MyOrdersComponent
+        path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]
       }, {
         path: 'login', component: LoginComponent
       }, {
@@ -61,7 +62,7 @@ import { AuthService } from './auth.service';
       }
     ])
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
